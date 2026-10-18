@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "Signal Desk — Live Fact Check",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "*://*.youtube.com/*",
+    "http://localhost:8787/*"
+  ],
+  "background": {
+    "service_worker": "background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "js": [
+        "content/interceptor.js",
+        "content/player-info.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://*.youtube.com/*"
+      ],
+      "css": [
+        "content/styles.css"
+      ],
+      "js": [
+        "content/claims.js",
+        "content/transcript.js",
+        "content/bubbles.js",
+        "content/content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Signal Desk"
+  },
+  "options_page": "options/options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "content/fonts/*"
+      ],
+      "matches": [
+        "*://*.youtube.com/*"
+      ]
+    }
+  ]
+}

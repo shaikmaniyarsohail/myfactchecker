@@ -1,0 +1,11 @@
+{
+  "name": "myfactchecker",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "npm --prefix server start",
+    "test": "npm --prefix server test",
+    "stop": "npm --prefix server run stop",
+    "restart": "npm --prefix server run restart"
+  }
+}

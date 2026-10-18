@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Signal Desk — Options</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="sd-shell">
+    <header class="sd-header">
+      <div class="sd-brand">
+        <span class="sd-badge">SIGNAL DESK</span>
+        <span class="sd-brand-name">Control Room</span>
+      </div>
+      <span class="sd-status">
+        <span class="sd-led sd-led--off" id="statusLed" aria-hidden="true"></span>
+        <span class="sd-status-text" id="statusText">CHECKING…</span>
+      </span>
+    </header>
+
+    <main class="sd-main">
+      <section class="sd-section">
+        <h2 class="sd-eyebrow">GENERAL</h2>
+
+        <div class="sd-row" id="row-enabled" data-save-row>
+          <div class="sd-row-text">
+            <h3 class="sd-row-title">Enable on this browser</h3>
+            <p class="sd-row-sub">Master switch for the claim overlay on all pages</p>
+          </div>
+          <button type="button" class="sd-switch" id="enabledSwitch" role="switch" aria-checked="false" aria-label="Enable on this browser">
+            <span class="sd-switch-knob"></span>
+          </button>
+        </div>
+
+        <div class="sd-row sd-row--stack" id="row-server" data-save-row>
+          <label class="sd-field-label" for="serverUrl">Server URL</label>
+          <div class="sd-inline">
+            <input type="url" id="serverUrl" class="sd-input" spellcheck="false" autocomplete="off" />
+            <button type="button" class="sd-btn" id="testBtn">TEST</button>
+          </div>
+          <p class="sd-hint" id="testResult" role="status" aria-live="polite">Tests the background service worker connection and your local server reachability.</p>
+        </div>
+      </section>
+
+      <section class="sd-section">
+        <h2 class="sd-eyebrow">SIGNAL FILTERS</h2>
+
+        <div class="sd-filter-grid">
+          <label class="sd-check sd-check--green" id="row-showSupported" data-save-row>
+            <input type="checkbox" id="showSupported" />
+            <span class="sd-check-box" aria-hidden="true"></span>
+            <span class="sd-check-text">
+              <span class="sd-check-name">Supported</span>
+              <span class="sd-check-desc">Claim backed by sources</span>
+            </span>
+          </label>
+
+          <label class="sd-check sd-check--red" id="row-showContradicted" data-save-row>
+            <input type="checkbox" id="showContradicted" />
+            <span class="sd-check-box" aria-hidden="true"></span>
+            <span class="sd-check-text">
+              <span class="sd-check-name">Contradicted</span>
+              <span class="sd-check-desc">Claim conflicts with sources</span>
+            </span>
+          </label>
+
+          <label class="sd-check sd-check--amber" id="row-showMisleading" data-save-row>
+            <input type="checkbox" id="showMisleading" />
+            <span class="sd-check-box" aria-hidden="true"></span>
+            <span class="sd-check-text">
+              <span class="sd-check-name">Misleading</span>
+              <span class="sd-check-desc">Partially true, missing context</span>
+            </span>
+          </label>
+
+          <label class="sd-check sd-check--blue" id="row-showUnverified" data-save-row>
+            <input type="checkbox" id="showUnverified" />
+            <span class="sd-check-box" aria-hidden="true"></span>
+            <span class="sd-check-text">
+              <span class="sd-check-name">Unverified</span>
+              <span class="sd-check-desc">No signal found (off by default)</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="sd-row sd-row--stack" id="row-confidence" data-save-row>
+          <div class="sd-row-head">
+            <label class="sd-field-label" for="minConfidence">Minimum confidence</label>
+            <output class="sd-readout" id="confidenceOut" for="minConfidence">0.55</output>
+          </div>
+          <input type="range" id="minConfidence" class="sd-slider" min="0" max="0.95" step="0.05" />
+          <p class="sd-hint">Verdicts below this confidence score are hidden.</p>
+        </div>
+      </section>
+
+      <section class="sd-section">
+        <h2 class="sd-eyebrow">LANGUAGE</h2>
+        <div class="sd-row sd-row--stack" id="row-language" data-save-row>
+          <label class="sd-field-label" for="language">UI language</label>
+          <select id="language" class="sd-select">
+            <option value="en">en — English</option>
+            <option value="es">es — Español</option>
+            <option value="fr">fr — Français</option>
+            <option value="de">de — Deutsch</option>
+            <option value="hi">hi — हिन्दी</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="sd-section">
+        <h2 class="sd-eyebrow">ABOUT</h2>
+        <p class="sd-about">
+          Local-first fact-check overlay. Claims checked against Wikipedia, DuckDuckGo,
+          and optional Google Fact Check Tools API via your local server at
+          <code class="sd-code">localhost:8787</code>.
+        </p>
+        <div class="sd-row sd-row--danger" id="row-reset">
+          <div class="sd-row-text">
+            <h3 class="sd-row-title">Reset to defaults</h3>
+            <p class="sd-row-sub">Restores factory settings for all controls above</p>
+          </div>
+          <button type="button" class="sd-btn sd-btn--danger" id="resetBtn">RESET</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="sd-footer">
+      <span class="sd-footer-note" id="saveNote" role="status" aria-live="polite"></span>
+      <span class="sd-version">v1.0.0</span>
+    </footer>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

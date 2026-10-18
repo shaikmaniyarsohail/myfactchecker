@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Signal Desk</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <header class="sd-header">
+    <span class="sd-badge">SIGNAL DESK</span>
+    <span class="sd-status" id="status">
+      <span class="sd-led sd-led--off" id="statusLed" aria-hidden="true"></span>
+      <span class="sd-status-text" id="statusText">CHECKING…</span>
+    </span>
+  </header>
+
+  <main class="sd-body">
+    <section class="sd-block sd-block--master" id="row-enabled" data-save-row>
+      <div class="sd-block-text">
+        <h2 class="sd-title">Enable on this browser</h2>
+        <p class="sd-sub">Master switch for the claim overlay</p>
+      </div>
+      <button type="button" class="sd-switch" id="enabledSwitch" role="switch" aria-checked="false" aria-label="Enable on this browser">
+        <span class="sd-switch-knob"></span>
+      </button>
+    </section>
+
+    <section class="sd-block sd-block--stack" id="row-server" data-save-row>
+      <label class="sd-eyebrow" for="serverUrl">SERVER URL</label>
+      <div class="sd-inline">
+        <input type="url" id="serverUrl" class="sd-input" spellcheck="false" autocomplete="off" />
+        <button type="button" class="sd-btn" id="testBtn">TEST</button>
+      </div>
+      <p class="sd-hint" id="testResult" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="sd-block sd-block--stack" id="row-filters">
+      <h2 class="sd-eyebrow">SIGNAL FILTERS</h2>
+      <div class="sd-filters">
+        <label class="sd-check sd-check--green" id="row-showSupported" data-save-row>
+          <input type="checkbox" id="showSupported" />
+          <span class="sd-check-box" aria-hidden="true"></span>
+          <span class="sd-check-label">Supported</span>
+        </label>
+        <label class="sd-check sd-check--red" id="row-showContradicted" data-save-row>
+          <input type="checkbox" id="showContradicted" />
+          <span class="sd-check-box" aria-hidden="true"></span>
+          <span class="sd-check-label">Contradicted</span>
+        </label>
+        <label class="sd-check sd-check--amber" id="row-showMisleading" data-save-row>
+          <input type="checkbox" id="showMisleading" />
+          <span class="sd-check-box" aria-hidden="true"></span>
+          <span class="sd-check-label">Misleading</span>
+        </label>
+        <label class="sd-check sd-check--blue" id="row-showUnverified" data-save-row>
+          <input type="checkbox" id="showUnverified" />
+          <span class="sd-check-box" aria-hidden="true"></span>
+          <span class="sd-check-label">Unverified</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="sd-block sd-block--stack" id="row-confidence" data-save-row>
+      <div class="sd-row-head">
+        <h2 class="sd-eyebrow">MIN CONFIDENCE</h2>
+        <output class="sd-readout" id="confidenceOut" for="minConfidence">0.55</output>
+      </div>
+      <input type="range" id="minConfidence" class="sd-slider" min="0" max="0.95" step="0.05" />
+    </section>
+
+    <section class="sd-block sd-block--stack" id="row-language" data-save-row>
+      <label class="sd-eyebrow" for="language">LANGUAGE</label>
+      <select id="language" class="sd-select">
+        <option value="en">en — English</option>
+        <option value="es">es — Español</option>
+        <option value="fr">fr — Français</option>
+        <option value="de">de — Deutsch</option>
+        <option value="hi">hi — हिन्दी</option>
+      </select>
+    </section>
+  </main>
+
+  <footer class="sd-footer">
+    <button type="button" class="sd-link" id="openOptions">Settings</button>
+    <span class="sd-version">v1.0.0</span>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
