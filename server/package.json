@@ -2,6 +2,7 @@
   "name": "myfactchecker-server",
   "version": "1.0.0",
   "description": "Free-API fact-checking backend for YouTube video claims",
+  "license": "MIT",
   "type": "module",
   "main": "src/server.js",
   "engines": {

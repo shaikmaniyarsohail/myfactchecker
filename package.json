@@ -2,6 +2,7 @@
   "name": "myfactchecker",
   "version": "1.0.0",
   "private": true,
+  "license": "MIT",
   "scripts": {
     "start": "npm --prefix server start",
     "test": "npm --prefix server test",

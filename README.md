@@ -60,3 +60,7 @@ Options page: same + about/reset. Everything persists in `chrome.storage.local`.
 - Verdicts are heuristic (text overlap, negation, numeric conflict) — treat as signals, not truth.
 - Wikipedia/DDG rate-limit under heavy use; 10-min in-memory LRU cache mitigates.
 - All testing, no telemetry, no accounts, no external services beyond public APIs.
+
+## License
+
+[MIT](LICENSE) © 2026 Shaik Maniyar Sohail.
